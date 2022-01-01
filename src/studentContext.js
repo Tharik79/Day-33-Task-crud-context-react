@@ -26,13 +26,13 @@ export function StudentProvider(props){
         city: "bengaluru",
         id:"03"
       }
-      ])
-
+      ]);
+          
 
       return(
 
         <StudentContext.Provider value={[students, setStudents]}>
             {props.children}
         </StudentContext.Provider>
-      )
-}
+      );
+};

@@ -1,17 +1,19 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import axios from "axios"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect, useContext} from "react";
 import { StudentProvider } from './studentContext';
 import {StudentContext} from "./studentContext";
+import AddStudent from './addStudent';
+
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Axios code</h1>
+      
       <StudentProvider>
+        <AddStudent />
         <StudentList />
       </StudentProvider>
           
@@ -24,21 +26,26 @@ export default App;
 function StudentList(){
 
     const [students, setStudents] = useContext(StudentContext);
-
-  
+     
       
       return(
 
-        <div>
-         { students.map((student) => (
-              <Student 
-                name={student.name}
-                age= {student.age}
-                key={student.id}
-              />
-          )
+        <div className='list'>
 
-          ) }
+            { students.map((student) => (
+
+                    <Student 
+                    
+                   name={student.name}
+                  age= {student.age}
+                   key={student.id}  />
+                            
+                        )
+                
+                
+              )  }
+
+                     
 
           
         </div>
@@ -46,15 +53,19 @@ function StudentList(){
 
 } ;
 
-function Student({name, age}){
+  function Student({ name, age, id}){
 
-  return(
-  <div>
-      <h3>{name}</h3>
-      <h3>{age}</h3>
-  </div>
+            return(
+              <div>
 
-  )
-}
+                  <h3>Name = {name}</h3>
+                  <h3>Age = {age}</h3>
+                  <h4>{id}</h4>
+
+              </div>
+            );
+            };      
+            
+
 
 
